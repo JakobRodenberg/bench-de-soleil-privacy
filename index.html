@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy — Bench de Soleil</title>
+  <meta name="description" content="What the Bench de Soleil app does with your data, in plain language." />
+  <style>
+    :root {
+      --brand: #B07800;
+      --bg: #ffffff;
+      --fg: #222222;
+      --muted: #666666;
+      --rule: #e3e3e3;
+      --card: #fff8e7;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --brand: #FFC845;
+        --bg: #121212;
+        --fg: #f2f2f2;
+        --muted: #b0b0b0;
+        --rule: #3a3a3a;
+        --card: #1e1b12;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+    header { border-bottom: 1px solid var(--rule); padding-bottom: 20px; margin-bottom: 28px; }
+    h1 { font-size: 30px; margin: 0 0 6px; }
+    h2 { font-size: 20px; margin: 34px 0 8px; color: var(--brand); }
+    a { color: var(--brand); }
+    .lang { font-size: 15px; color: var(--muted); margin: 0 0 14px; }
+    .updated { font-size: 15px; color: var(--muted); font-style: italic; margin: 4px 0 0; }
+    .lead { background: var(--card); border-radius: 12px; padding: 14px 18px; }
+    ul { padding-left: 22px; }
+    li { margin: 5px 0; }
+    strong { font-weight: 600; }
+    footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 15px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Privacy</h1>
+      <p class="lang">Bench de Soleil &middot; the Danish privacy notice is shown inside the app under Settings &rarr; Privacy.</p>
+      <p class="lead"><strong>Bench de Soleil</strong> is a small private-beta app that maps sun and shade across public benches across Denmark. This page describes what the app does with your data — in plain language, with no hidden footnotes.</p>
+      <p class="updated">Last updated: 2026-06-15</p>
+    </header>
+
+    <main>
+      <h2>What the app collects</h2>
+      <p><strong>Your location, only while the app is open — and it only leaves your phone when you ask for a find-nearest.</strong></p>
+      <p>The app uses Apple's standard "foreground-only" location permission. A fix is only used in three situations:</p>
+      <ul>
+        <li>You tap the <strong>↺ Locate</strong> button — to drop the blue dot on the map.</li>
+        <li>You use 🔭 Find nearest… (or the timeframe filter's find-nearest) — to ask "where's the closest sunny / shady bench, or place, from me?".</li>
+        <li>When the app opens and you've already granted permission, it refreshes your position automatically — to place your blue dot and open the map at your local area. That automatic fix is used entirely on your phone; nothing is sent.</li>
+      </ul>
+      <p>When you ask for the nearest bench or place, the app sends one HTTPS request to the server with your latitude and longitude. The server uses those coordinates <strong>only to compute the nearest matching bench</strong>, then returns the bench. <strong>The coordinates are not stored anywhere.</strong> The server is configured to omit lat/lon from its access logs.</p>
+      <p>No background tracking, no continuous fixes, no movement history.</p>
+
+      <h2>Crash reports</h2>
+      <p><strong>If the app hits an error, it sends a one-off crash report to the server</strong>, so the bug can be found and fixed. A report contains only the error and basic build context:</p>
+      <ul>
+        <li><strong>Message and stack trace</strong> — what failed and where in the code.</li>
+        <li><strong>Build context</strong> — platform (iOS / Android), OS version, app version, and update-bundle id. None of it identifies you.</li>
+      </ul>
+      <p>A report <strong>never includes your location</strong>, any device or advertising identifier, or any other personal data. Reports are <strong>written to the server's logs and never stored by us</strong> — they live only in the hosting provider's rolling log window (a few days), are not linked to your IP address, and can't be tied back to you.</p>
+
+      <h2>Bench and place reports</h2>
+      <p><strong>If you report a problem with a bench — or a place like a café or playground — that report goes to the server so the data can be corrected.</strong> A report contains:</p>
+      <ul>
+        <li><strong>What you reported</strong> — that a bench is gone, in the wrong spot, or missing at a spot, or that a place is gone, in the wrong spot, or has the wrong details.</li>
+        <li><strong>A location</strong> — the bench's or place's coordinates, or the spot you marked for a missing bench.</li>
+        <li><strong>Your note</strong> — only the optional text you choose to type.</li>
+        <li><strong>Build context</strong> — app version, platform, and language. None of it identifies you.</li>
+        <li><strong>A random install id</strong> — an identifier made up on your device the first time you report, so the server can tell when several people report the same thing. It is linked to nothing, identifies no one, and resets if you reinstall the app.</li>
+      </ul>
+      <p>There is <strong>no human reviewer</strong>. When enough independent bench reports agree, the map updates itself — a removed bench stops showing, a misplaced pin moves — within strict daily limits, and every change can be undone. Place reports aren't applied to the map automatically — they're only passed on to OpenStreetMap for the mapping community to review.</p>
+      <p>Your note may be <strong>published publicly to OpenStreetMap</strong> — the open map database the bench and place data comes from — so the mapping community can fix it at the source. <strong>Don't put personal information in a note.</strong></p>
+      <p>Reports are kept for up to 180 days, and records of automated actions for 90 days after they are undone. No IP address is logged or stored with a report.</p>
+
+      <h2>What the app does NOT collect</h2>
+      <ul>
+        <li>No accounts, no logins, no profiles</li>
+        <li>No analytics</li>
+        <li>No cookies, no device fingerprinting</li>
+        <li>No advertising identifiers</li>
+        <li>No persistent user ID for using the map — bench and place reports carry a random, resettable install id (see Bench and place reports above)</li>
+      </ul>
+      <p>For everything except a bench or place report, you are an anonymous, interchangeable HTTPS client to this server — we can't tell two requests apart, and we don't try to. A bench or place report is the one exception: it carries a random install id, on purpose, so reports that agree can be counted.</p>
+
+      <h2>What the server keeps</h2>
+      <ul>
+        <li><strong>Bench data, building footprints, tree canopy</strong> — from OpenStreetMap, the Danish Datafordeler, and the Danish Map Agency's elevation model. Public data, no user information.</li>
+        <li><strong>Cloud forecast</strong> — fetched periodically from Met Norway. Also entirely user-free.</li>
+        <li><strong>Rate limits</strong> — to prevent abuse, the server temporarily holds a counter of requests per source IP. This counter is in memory only and resets continuously; nothing is written to disk.</li>
+      </ul>
+
+      <h2>Where your data goes</h2>
+      <p>When you use the app, your phone talks to:</p>
+      <ul>
+        <li><strong>The Bench de Soleil server</strong> (hosted on fly.io, region Stockholm) — for bench data, weather, and find-nearest. Server source is open and inspectable.</li>
+        <li><strong>MapTiler</strong> — for the base map tiles. MapTiler's own privacy practices apply for those requests; see <a href="https://www.maptiler.com/privacy/">maptiler.com/privacy</a>.</li>
+        <li><strong>Apple Maps</strong> (only when you tap a bench's "Walk here →") — opens with the destination bench's coordinates so Apple can compute walking directions from your current location.</li>
+      </ul>
+      <p>No other third parties are contacted.</p>
+
+      <h2>Settings stored on your phone</h2>
+      <p>The app remembers your preferences on your device only — for example your cloud-tolerance threshold and what time the slider opens at. These never leave your phone. Deleting the app removes them.</p>
+
+      <h2>Your rights</h2>
+      <ul>
+        <li><strong>Stop sharing location</strong>: revoke permission any time in iPhone Settings → Bench de Soleil → Location. The app keeps working — only the "find nearest bench from me" features stop.</li>
+        <li><strong>Erase all on-device data</strong>: uninstall the app. The saved settings and any cached map tiles go with it.</li>
+        <li><strong>Ask anything</strong>: see contact below.</li>
+      </ul>
+
+      <h2>Children</h2>
+      <p>This app has no profile, no chat, no social features, no advertising. It also collects no data fitting GDPR's "personal data of children" definition. Children aren't a special category here because there's nothing special about anyone — we have no way to tell who you are.</p>
+
+      <h2>Changes</h2>
+      <p>If the app's data handling changes meaningfully, this page is updated and the date at the top revised. Active testers are notified by email at the same time.</p>
+
+      <h2>Contact</h2>
+      <p>For any privacy question — there's nothing identifiable to delete, but if you'd like to be sure: <a href="mailto:jakobrodenberg@gmail.com">jakobrodenberg@gmail.com</a>.</p>
+    </main>
+
+    <footer>— The maintainer</footer>
+  </div>
+</body>
+</html>
