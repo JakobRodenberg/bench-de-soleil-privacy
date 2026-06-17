@@ -53,7 +53,7 @@
       <h1>Privacy</h1>
       <p class="lang">Bench de Soleil &middot; the Danish privacy notice is shown inside the app under Settings &rarr; Privacy.</p>
       <p class="lead"><strong>Bench de Soleil</strong> is a small private-beta app that maps sun and shade across public benches across Denmark. This page describes what the app does with your data — in plain language, with no hidden footnotes.</p>
-      <p class="updated">Last updated: 2026-06-15</p>
+      <p class="updated">Last updated: 2026-06-17</p>
     </header>
 
     <main>
@@ -109,8 +109,7 @@
       <h2>Where your data goes</h2>
       <p>When you use the app, your phone talks to:</p>
       <ul>
-        <li><strong>The Bench de Soleil server</strong> (hosted on fly.io, region Stockholm) — for bench data, weather, and find-nearest. Server source is open and inspectable.</li>
-        <li><strong>MapTiler</strong> — for the base map tiles. MapTiler's own privacy practices apply for those requests; see <a href="https://www.maptiler.com/privacy/">maptiler.com/privacy</a>.</li>
+        <li><strong>The Bench de Soleil server</strong> (hosted on fly.io, region Stockholm) — for bench data, weather, find-nearest, and the map itself: the vector map tiles and the open-source map libraries are served from this same server, so no third-party map provider sees you. Server source is open and inspectable.</li>
         <li><strong>Apple Maps</strong> (only when you tap a bench's "Walk here →") — opens with the destination bench's coordinates so Apple can compute walking directions from your current location.</li>
       </ul>
       <p>No other third parties are contacted.</p>
@@ -118,10 +117,20 @@
       <h2>Settings stored on your phone</h2>
       <p>The app remembers your preferences on your device only — for example your cloud-tolerance threshold and what time the slider opens at. These never leave your phone. Deleting the app removes them.</p>
 
+      <h2>Legal basis</h2>
+      <p>The little data described above is processed on two bases under the GDPR (Article 6):</p>
+      <ul>
+        <li><strong>Your consent</strong> — for using your location (you grant the permission and trigger each fix yourself) and for submitting a bench or place report. Withdraw it any time: turn off location in iPhone Settings, and simply don't submit reports.</li>
+        <li><strong>Our legitimate interest</strong> — in keeping the service available and free of abuse (the in-memory rate-limit counter) and in finding and fixing bugs (crash reports). Neither stores personal data.</li>
+      </ul>
+
       <h2>Your rights</h2>
+      <p>Under the GDPR you can access, correct, delete, restrict, or object to the processing of your personal data, and ask for portability. Because the app stores almost nothing about you and never links data to your identity, most of these have little to act on:</p>
       <ul>
         <li><strong>Stop sharing location</strong>: revoke permission any time in iPhone Settings → Bench de Soleil → Location. The app keeps working — only the "find nearest bench from me" features stop.</li>
         <li><strong>Erase all on-device data</strong>: uninstall the app. The saved settings and any cached map tiles go with it.</li>
+        <li><strong>Your reports</strong>: a report carries only a random install id linked to nothing, so we genuinely can't tell which reports are yours — there's nothing to look up, hand over, or delete on request (GDPR Article 11). The id resets if you reinstall, and every report auto-expires within 180 days.</li>
+        <li><strong>Complain to a regulator</strong>: if you believe your data rights weren't respected, you can lodge a complaint with Datatilsynet, the Danish Data Protection Agency (<a href="https://www.datatilsynet.dk/english">datatilsynet.dk</a>).</li>
         <li><strong>Ask anything</strong>: see contact below.</li>
       </ul>
 
@@ -132,7 +141,7 @@
       <p>If the app's data handling changes meaningfully, this page is updated and the date at the top revised. Active testers are notified by email at the same time.</p>
 
       <h2>Contact</h2>
-      <p>For any privacy question — there's nothing identifiable to delete, but if you'd like to be sure: <a href="mailto:jakobrodenberg@gmail.com">jakobrodenberg@gmail.com</a>.</p>
+      <p><strong>Bench de Soleil is run by Jakob Rodenberg (Denmark)</strong> — the data controller under the GDPR. For any privacy question, or to exercise one of the rights above: <a href="mailto:jakobrodenberg@gmail.com">jakobrodenberg@gmail.com</a>.</p>
     </main>
 
     <footer>— The maintainer</footer>
