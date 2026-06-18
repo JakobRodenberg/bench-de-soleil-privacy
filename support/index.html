@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Support — Bench de Soleil</title>
+  <meta name="description" content="Help and contact for the Bench de Soleil app." />
+  <style>
+    :root {
+      --brand: #B07800;
+      --bg: #ffffff;
+      --fg: #222222;
+      --muted: #666666;
+      --rule: #e3e3e3;
+      --card: #fff8e7;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --brand: #FFC845;
+        --bg: #121212;
+        --fg: #f2f2f2;
+        --muted: #b0b0b0;
+        --rule: #3a3a3a;
+        --card: #1e1b12;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      font-size: 17px;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 32px 20px 64px; }
+    header { border-bottom: 1px solid var(--rule); padding-bottom: 20px; margin-bottom: 28px; }
+    h1 { font-size: 30px; margin: 0 0 6px; }
+    h2 { font-size: 20px; margin: 34px 0 8px; color: var(--brand); }
+    a { color: var(--brand); }
+    .lead { background: var(--card); border-radius: 12px; padding: 14px 18px; }
+    p.q { font-weight: 600; margin-bottom: 2px; }
+    footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--rule); color: var(--muted); font-size: 15px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Support</h1>
+      <p class="lead"><strong>Bench de Soleil</strong> maps public benches across Denmark by real sun and shade. This page is how to get help.</p>
+    </header>
+
+    <main>
+      <h2>Contact</h2>
+      <p>Questions, bug reports, or feedback: <a href="mailto:jakobrodenberg@gmail.com">jakobrodenberg@gmail.com</a>. It's a small, independent app — replies may take a little while.</p>
+
+      <h2>Common questions</h2>
+
+      <p class="q">"Find nearest" or the blue dot does nothing</p>
+      <p>The app needs location permission, which it only asks for when you tap <strong>↺ Locate</strong> or <strong>🔭 Find nearest…</strong>. If you previously declined, enable it in iPhone Settings → Bench de Soleil → Location. The rest of the app works without it.</p>
+
+      <p class="q">The map is grey / benches don't load</p>
+      <p>Usually a connectivity issue — check the phone has internet and isn't on a captive Wi-Fi sign-in page. The map recovers on its own when the connection returns.</p>
+
+      <p class="q">A bench is in the wrong place, gone, or missing</p>
+      <p>Tap the bench (or long-press an empty spot) → <strong>Report a problem</strong>. Reports are crowdsourced: when enough people independently agree, the map corrects itself, and corrections are passed to OpenStreetMap.</p>
+
+      <p class="q">How accurate is the sun/shade?</p>
+      <p>It's a best-effort estimate from building, tree, and terrain data plus a cloud forecast — not a guarantee. Use your own judgement; reality wins.</p>
+
+      <h2>Privacy &amp; terms</h2>
+      <p>
+        <a href="https://jakobrodenberg.github.io/bench-de-soleil-privacy/">Privacy notice</a> &middot;
+        <a href="https://jakobrodenberg.github.io/bench-de-soleil-privacy/terms/">Terms of Use</a>
+      </p>
+    </main>
+
+    <footer>— Jakob Storm Rodenberg</footer>
+  </div>
+</body>
+</html>
