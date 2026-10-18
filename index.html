@@ -53,7 +53,7 @@
       <h1>Privacy</h1>
       <p class="lang">Bench de Soleil &middot; the Danish privacy notice is shown inside the app under Settings &rarr; Privacy.</p>
       <p class="lead"><strong>Bench de Soleil</strong> is a small private-beta app that maps sun and shade across public benches across Denmark. This page describes what the app does with your data — in plain language, with no hidden footnotes.</p>
-      <p class="updated">Last updated: 2026-06-17</p>
+      <p class="updated">Last updated: 2026-10-18</p>
     </header>
 
     <main>
@@ -65,25 +65,25 @@
         <li>You use 🔭 Find nearest… (or the timeframe filter's find-nearest) — to ask "where's the closest sunny / shady bench, or place, from me?".</li>
         <li>When the app opens and you've already granted permission, it refreshes your position automatically — to place your blue dot and open the map at your local area. That automatic fix is used entirely on your phone; nothing is sent.</li>
       </ul>
-      <p>When you ask for the nearest bench or place, the app sends one HTTPS request to the server with your latitude and longitude. The server uses those coordinates <strong>only to compute the nearest matching bench</strong>, then returns the bench. <strong>The coordinates are not stored anywhere.</strong> The server is configured to omit lat/lon from its access logs.</p>
+      <p>When you ask for the nearest bench or place, <strong>the search happens entirely on your phone</strong>. The app downloads map data for the surrounding area and compares it locally, so <strong>your coordinates are never sent anywhere</strong>. This used to be computed by our server, which needed your latitude and longitude; that server has been retired.</p>
       <p>No background tracking, no continuous fixes, no movement history.</p>
 
       <h2>Crash reports</h2>
-      <p><strong>If the app hits an error, it sends a one-off crash report to the server</strong>, so the bug can be found and fixed. A report contains only the error and basic build context:</p>
+      <p><strong>If the app hits an error, it sends a one-off crash report to our reports service</strong>, so the bug can be found and fixed. A report contains only the error and basic build context:</p>
       <ul>
         <li><strong>Message and stack trace</strong> — what failed and where in the code.</li>
         <li><strong>Build context</strong> — platform (iOS / Android), OS version, app version, and update-bundle id. None of it identifies you.</li>
       </ul>
-      <p>A report <strong>never includes your location</strong>, any device or advertising identifier, or any other personal data. Reports are <strong>written to the server's logs and never stored by us</strong> — they live only in the hosting provider's rolling log window (a few days), are not linked to your IP address, and can't be tied back to you.</p>
+      <p>A report <strong>never includes your location</strong>, any device or advertising identifier, or any other personal data. Reports are <strong>written to the service's logs and never stored by us</strong> — they live only in the hosting provider's rolling log window (a few days), are not linked to your IP address, and can't be tied back to you.</p>
 
       <h2>Bench and place reports</h2>
-      <p><strong>If you report a problem with a bench — or a place like a café or playground — that report goes to the server so the data can be corrected.</strong> A report contains:</p>
+      <p><strong>If you report a problem with a bench — or a place like a café or playground — that report goes to our reports service so the data can be corrected.</strong> A report contains:</p>
       <ul>
         <li><strong>What you reported</strong> — that a bench is gone, in the wrong spot, or missing at a spot, or that a place is gone, in the wrong spot, or has the wrong details.</li>
         <li><strong>A location</strong> — the bench's or place's coordinates, or the spot you marked for a missing bench.</li>
         <li><strong>Your note</strong> — only the optional text you choose to type.</li>
         <li><strong>Build context</strong> — app version, platform, and language. None of it identifies you.</li>
-        <li><strong>A random install id</strong> — an identifier made up on your device the first time you report, so the server can tell when several people report the same thing. It is linked to nothing, identifies no one, and resets if you reinstall the app.</li>
+        <li><strong>A random install id</strong> — an identifier made up on your device the first time you report, so the service can tell when several people report the same thing. It is linked to nothing, identifies no one, and resets if you reinstall the app.</li>
       </ul>
       <p>There is <strong>no human reviewer</strong>. When enough independent bench reports agree, the map updates itself — a removed bench stops showing, a misplaced pin moves — within strict daily limits, and every change can be undone. Place reports aren't applied to the map automatically — they're only passed on to OpenStreetMap for the mapping community to review.</p>
       <p>Your note may be <strong>published publicly to OpenStreetMap</strong> — the open map database the bench and place data comes from — so the mapping community can fix it at the source. <strong>Don't put personal information in a note.</strong></p>
@@ -97,25 +97,35 @@
         <li>No advertising identifiers</li>
         <li>No persistent user ID for using the map — bench and place reports carry a random, resettable install id (see Bench and place reports above)</li>
       </ul>
-      <p>For everything except a bench or place report, you are an anonymous, interchangeable HTTPS client to this server — we can't tell two requests apart, and we don't try to. A bench or place report is the one exception: it carries a random install id, on purpose, so reports that agree can be counted.</p>
+      <p>For everything except a bench or place report, you are an anonymous, interchangeable HTTPS client to these services — we can't tell two requests apart, and we don't try to. A bench or place report is the one exception: it carries a random install id, on purpose, so reports that agree can be counted.</p>
 
-      <h2>What the server keeps</h2>
+      <h2>What we keep</h2>
       <ul>
         <li><strong>Bench data, building footprints, tree canopy</strong> — from OpenStreetMap, the Danish Datafordeler, and the Danish Map Agency's elevation model. Public data, no user information.</li>
-        <li><strong>Cloud forecast</strong> — fetched periodically from Met Norway. Also entirely user-free.</li>
-        <li><strong>Rate limits</strong> — to prevent abuse, the server temporarily holds a counter of requests per source IP. This counter is in memory only and resets continuously; nothing is written to disk.</li>
+        <li><strong>Cloud forecast</strong> — fetched periodically from Met Norway by us, then published as plain files. Your phone never contacts Met Norway, so Met Norway never sees you.</li>
+        <li><strong>No request logs of our own</strong> — we no longer run a server, so there are no server logs we hold. The providers that host the files keep their own standard web logs; see “Where your data goes”.</li>
       </ul>
 
       <h2>Where your data goes</h2>
       <p>When you use the app, your phone talks to:</p>
       <ul>
-        <li><strong>The Bench de Soleil server</strong> (hosted on fly.io, region Stockholm) — for bench data, weather, find-nearest, and the map itself: the vector map tiles and the open-source map libraries are served from this same server, so no third-party map provider sees you. Server source is open and inspectable.</li>
+        <li><strong>GitHub Pages</strong> — serves the bench, sun/shade, weather and map-style files. The app downloads them by area, so a request names a map tile (roughly 5 km across) or a weather cell (roughly 11 km across). GitHub receives your IP address and which files you asked for, and keeps its own web logs that we neither control nor receive. It cannot see your exact position — only roughly which part of the map you are looking at.</li>
+        <li><strong>Cloudflare</strong> — serves the map's tile archive, and receives bench and place reports and crash reports. Same picture: your IP address and what was requested, in Cloudflare's own logs.</li>
         <li><strong>Apple Maps</strong> (only when you tap a bench's "Walk here →") — opens with the destination bench's coordinates so Apple can compute walking directions from your current location.</li>
       </ul>
       <p>No other third parties are contacted.</p>
+      <p><strong>What changed.</strong> The app used to talk to a single server we ran, configured not to log coordinates. That server was retired so the app costs nothing to run. The trade is honest in both directions: these providers now see your IP address and roughly which area you browse &mdash; as any website you visit does &mdash; while your exact location no longer leaves your phone at all, not even for find-nearest. All the data being served is public map data; none of it is about you.</p>
 
-      <h2>Settings stored on your phone</h2>
-      <p>The app remembers your preferences on your device only — for example your cloud-tolerance threshold and what time the slider opens at. These never leave your phone. Deleting the app removes them.</p>
+      <h2>What is stored on your phone</h2>
+      <p>The app keeps these on your device only:</p>
+      <ul>
+        <li><strong>Your preferences</strong> — cloud tolerance, timeframe strictness, when the time slider opens (and where you last left it), where the map opens, language, appearance, your "Benches near…" filter, the region you picked, and whether you have seen the welcome screens.</li>
+        <li><strong>Your last map view</strong> — the map's centre and zoom, saved whenever you leave the app. The map starts there next time, and stays there if you chose "Where I left off". This is a location: the place you were last looking at.</li>
+        <li><strong>Your favorite benches</strong> — each saved bench's name and position, and when you saved it.</li>
+        <li><strong>A random install id</strong> — only once you have sent a report; it travels with your reports (see "Bench and place reports").</li>
+        <li><strong>Map data you have viewed</strong> — public map tiles, kept so the map loads faster and costs less to serve.</li>
+      </ul>
+      <p>None of this leaves your phone, except the install id, which is sent with a report. Deleting the app removes all of it.</p>
 
       <h2>Legal basis</h2>
       <p>The little data described above is processed on two bases under the GDPR (Article 6):</p>
@@ -128,7 +138,7 @@
       <p>Under the GDPR you can access, correct, delete, restrict, or object to the processing of your personal data, and ask for portability. Because the app stores almost nothing about you and never links data to your identity, most of these have little to act on:</p>
       <ul>
         <li><strong>Stop sharing location</strong>: revoke permission any time in iPhone Settings → Bench de Soleil → Location. The app keeps working — only the "find nearest bench from me" features stop.</li>
-        <li><strong>Erase all on-device data</strong>: uninstall the app. The saved settings and any cached map tiles go with it.</li>
+        <li><strong>Erase all on-device data</strong>: uninstall the app. Everything listed under &quot;What is stored on your phone&quot; goes with it.</li>
         <li><strong>Your reports</strong>: a report carries only a random install id linked to nothing, so we genuinely can't tell which reports are yours — there's nothing to look up, hand over, or delete on request (GDPR Article 11). The id resets if you reinstall, and every report auto-expires within 180 days.</li>
         <li><strong>Complain to a regulator</strong>: if you believe your data rights weren't respected, you can lodge a complaint with Datatilsynet, the Danish Data Protection Agency (<a href="https://www.datatilsynet.dk/english">datatilsynet.dk</a>).</li>
         <li><strong>Ask anything</strong>: see contact below.</li>
